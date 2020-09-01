@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useStateValue } from '../../StateProvider';
+import { actionTypes } from '../../actionTypes';
 import './Header.scss';
 
 import { Avatar } from '@material-ui/core';
@@ -8,7 +9,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 
 const Header = () => {
-  const [{ user }] = useStateValue();
+  const [state, dispatch] = useStateValue();
+  const { user } = state;
   const [searchInput, setSearchInput] = useState('');
 
   return (
@@ -16,8 +18,6 @@ const Header = () => {
       <div className='header__left'>
         <Avatar
           className='header__avatar'
-          // alt='username'
-          // src=''
           alt={user?.displayName}
           src={user?.photoURL}
         />
@@ -27,9 +27,16 @@ const Header = () => {
         <SearchIcon />
         <input
           value={searchInput}
-          onChange={(e) => setSearchInput(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+            dispatch({ type: actionTypes.SET_SEARCH, payload: value });
+            setSearchInput(value);
+          }}
           onKeyDown={(e) => {
-            if (e.keyCode === 13) setSearchInput('');
+            if (e.keyCode === 13) {
+              setSearchInput('');
+              dispatch({ type: actionTypes.SET_SEARCH, payload: '' });
+            }
           }}
           placeholder='Search something'
         />

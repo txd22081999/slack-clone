@@ -1,3 +1,7 @@
+// --slack-color: #3f0f40;
+$dark-purple: #340e36;
+$purple: #49274b;
+
 .sidebarOption {
   display: flex;
   align-items: center;
@@ -7,8 +11,13 @@
   cursor: pointer;
 
   &:hover {
-    background-color: #340e36;
+    background-color: $dark-purple;
     opacity: 0.9;
+
+    .sidebarOption__close {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   .sidebarOption__icon {
@@ -18,6 +27,8 @@
 
   .sidebarOption__channel {
     padding: 10px;
+    // display: flex;
+    // align-items: center;
 
     .sidebarOption__hash {
       padding-right: 15px;
@@ -26,5 +37,22 @@
 
   h3 {
     font-weight: 500;
+  }
+
+  .sidebarOption__close {
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: 5px;
+    background-color: transparent;
+    border-radius: 50%;
+    // transition: 0.2s ease-in;
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+
+    &:hover {
+      background-color: white;
+      color: $purple;
+    }
   }
 }

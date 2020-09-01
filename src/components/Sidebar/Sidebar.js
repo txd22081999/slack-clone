@@ -83,17 +83,15 @@ const Sidebar = () => {
         Icon={ExpandMoreIcon}
         title='Channels'
         toggleChannel={toggleChannel}
-
-        // onClick={() => {
-        //   console.log('CLICK');
-        //   toggleChannel();
-        // }}
-        // onClick=
       />
 
       {displayChannel &&
         channels.map((channel) => (
-          <SidebarOption title={channel.name} id={channel.id} />
+          <SidebarOption
+            key={channel.id}
+            title={channel.name}
+            id={channel.id}
+          />
         ))}
     </div>
   );

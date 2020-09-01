@@ -4,9 +4,10 @@ $purple: #49274b;
   background-color: var(--slack-color);
   color: white;
   border-top: 1px solid $purple;
-  max-width: 260px;
   min-width: 150px;
   overflow-y: scroll;
+  height: 91vh;
+
   &::-webkit-scrollbar {
     display: none;
   }

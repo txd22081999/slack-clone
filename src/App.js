@@ -10,7 +10,6 @@ import Chat from './components/Chat/Chat';
 import Login from './components/Login/Login';
 
 function App() {
-  // const [user, setUser] = useState(null);
   const [state, dispatch] = useStateValue();
 
   const { user } = state;
@@ -30,7 +29,9 @@ function App() {
                   <Chat />
                 </Route>
                 <Route path='/'>
-                  <p>You have not in a room yet. Choose one!</p>
+                  <p className='alert-message'>
+                    You have not in a room yet. Choose one!
+                  </p>
                 </Route>
               </Switch>
             </div>

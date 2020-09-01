@@ -10,13 +10,13 @@ const ChatInput = (props) => {
   const [{ user }] = useStateValue();
 
   const { channelId } = props;
-  console.log(channelId);
+  // console.log(channelId);
 
   const sendMessage = (e) => {
     e.preventDefault();
 
     if (channelId) {
-      console.log(db.collection('rooms').doc(channelId).collection('messages'));
+      // console.log(db.collection('rooms').doc(channelId).collection('messages'));
       db.collection('rooms').doc(channelId).collection('messages').add({
         message: input,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),

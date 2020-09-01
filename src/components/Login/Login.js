@@ -15,7 +15,6 @@ const Login = () => {
     try {
       const result = await auth.signInWithPopup(provider);
       dispatch({ type: actionTypes.SET_USER, payload: result.user });
-      // console.log(result);
     } catch (error) {
       console.log(error.message);
     }

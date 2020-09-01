@@ -1,7 +1,9 @@
 import React from 'react';
-import './SidebarOption.scss';
 import { useHistory } from 'react-router-dom';
 import db from '../../firebase';
+
+import CloseIcon from '@material-ui/icons/Close';
+import './SidebarOption.scss';
 
 const SidebarOption = (props) => {
   const { Icon, id, title, addChannelOption, expand } = props;
@@ -24,6 +26,10 @@ const SidebarOption = (props) => {
         name: channelName
       });
     }
+  };
+
+  const deleteChannel = () => {
+    const data = db.collection('rooms').doc(id).delete();
   };
 
   return (
@@ -50,10 +56,16 @@ const SidebarOption = (props) => {
       {Icon ? (
         <h3>{title}</h3>
       ) : (
-        <h3 className='sidebarOption__channel'>
-          <span className='sidebarOption__hash'>#</span>
-          {title}
-        </h3>
+        <>
+          <h3 className='sidebarOption__channel'>
+            <span className='sidebarOption__hash'>#</span>
+            {title}
+          </h3>
+          <CloseIcon
+            className='sidebarOption__close'
+            onClick={() => deleteChannel()}
+          />
+        </>
       )}
     </div>
   );
